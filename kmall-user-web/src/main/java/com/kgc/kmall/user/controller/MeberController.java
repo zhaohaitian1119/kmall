@@ -25,5 +25,6 @@ public class MeberController {
     public List<Member> test(){
 
         return memberService.selectAllMember();
+
     }
 }
