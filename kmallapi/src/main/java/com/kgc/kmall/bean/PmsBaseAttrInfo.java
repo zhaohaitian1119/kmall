@@ -1,6 +1,7 @@
 package com.kgc.kmall.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class PmsBaseAttrInfo implements Serializable {
     private Long id;
@@ -10,6 +11,16 @@ public class PmsBaseAttrInfo implements Serializable {
     private Long catalog3Id;
 
     private String isEnabled;
+
+    private List<PmsBaseAttrValue> attrValueList;
+
+    public List<PmsBaseAttrValue> getAttrValueList() {
+        return attrValueList;
+    }
+
+    public void setAttrValueList(List<PmsBaseAttrValue> attrValueList) {
+        this.attrValueList = attrValueList;
+    }
 
     public Long getId() {
         return id;

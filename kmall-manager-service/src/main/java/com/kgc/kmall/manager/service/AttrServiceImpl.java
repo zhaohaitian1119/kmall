@@ -39,8 +39,26 @@ public class AttrServiceImpl implements AttrService {
 
     @Override
     public Integer add(PmsBaseAttrInfo attrInfo) {
-        int i = pmsBaseAttrInfoMapper.insertSelective(attrInfo);
-        return i;
+//        int i =
+
+        try {
+            if(attrInfo.getId() == null){
+                pmsBaseAttrInfoMapper.insertSelective(attrInfo);
+            }else{
+                pmsBaseAttrInfoMapper.updateByPrimaryKeySelective(attrInfo);
+                PmsBaseAttrValueExample example = new PmsBaseAttrValueExample();
+                PmsBaseAttrValueExample.Criteria criteria = example.createCriteria();
+                criteria.andAttrIdEqualTo(attrInfo.getId());
+                pmsBaseAttrValueMapper.deleteByExample(example);
+            }
+
+            pmsBaseAttrValueMapper.insertBatch(attrInfo.getId(),attrInfo.getAttrValueList());
+
+            return 1;
+        }catch (Exception ex){
+            ex.printStackTrace();
+            return -1;
+        }
     }
 
     @Override

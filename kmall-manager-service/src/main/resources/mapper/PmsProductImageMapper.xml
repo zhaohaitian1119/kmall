@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.kgc.kmall.manager.mapper.PmsBaseAttrValueMapper" >
-
-  <insert id="insertBatch">
-    INSERT into pms_base_attr_value(value_name,attr_id) VALUES
-    <foreach collection="attrValueList" item="val" separator=",">
-      (#{val.valueName},#{attrId})
-    </foreach>
-  </insert>
-
-  <resultMap id="BaseResultMap" type="com.kgc.kmall.bean.PmsBaseAttrValue" >
+<mapper namespace="com.kgc.kmall.manager.mapper.PmsProductImageMapper" >
+  <resultMap id="BaseResultMap" type="com.kgc.kmall.bean.PmsProductImage" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="value_name" property="valueName" jdbcType="VARCHAR" />
-    <result column="attr_id" property="attrId" jdbcType="BIGINT" />
-    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <result column="product_id" property="productId" jdbcType="BIGINT" />
+    <result column="img_name" property="imgName" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, value_name, attr_id, is_enabled
+    id, product_id, img_name, img_url
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.kmall.bean.PmsBaseAttrValueExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.kgc.kmall.bean.PmsProductImageExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from pms_base_attr_value
+    from pms_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,76 +85,76 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from pms_base_attr_value
+    from pms_product_image
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from pms_base_attr_value
+    delete from pms_product_image
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.kgc.kmall.bean.PmsBaseAttrValueExample" >
-    delete from pms_base_attr_value
+  <delete id="deleteByExample" parameterType="com.kgc.kmall.bean.PmsProductImageExample" >
+    delete from pms_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsBaseAttrValue" >
-    insert into pms_base_attr_value (id, value_name, attr_id, 
-      is_enabled)
-    values (#{id,jdbcType=BIGINT}, #{valueName,jdbcType=VARCHAR}, #{attrId,jdbcType=BIGINT}, 
-      #{isEnabled,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsProductImage" >
+    insert into pms_product_image (id, product_id, img_name, 
+      img_url)
+    values (#{id,jdbcType=BIGINT}, #{productId,jdbcType=BIGINT}, #{imgName,jdbcType=VARCHAR}, 
+      #{imgUrl,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsBaseAttrValue" >
-    insert into pms_base_attr_value
+  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsProductImage" >
+    insert into pms_product_image
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="valueName != null" >
-        value_name,
+      <if test="productId != null" >
+        product_id,
       </if>
-      <if test="attrId != null" >
-        attr_id,
+      <if test="imgName != null" >
+        img_name,
       </if>
-      <if test="isEnabled != null" >
-        is_enabled,
+      <if test="imgUrl != null" >
+        img_url,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="valueName != null" >
-        #{valueName,jdbcType=VARCHAR},
+      <if test="productId != null" >
+        #{productId,jdbcType=BIGINT},
       </if>
-      <if test="attrId != null" >
-        #{attrId,jdbcType=BIGINT},
+      <if test="imgName != null" >
+        #{imgName,jdbcType=VARCHAR},
       </if>
-      <if test="isEnabled != null" >
-        #{isEnabled,jdbcType=VARCHAR},
+      <if test="imgUrl != null" >
+        #{imgUrl,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.kgc.kmall.bean.PmsBaseAttrValueExample" resultType="java.lang.Integer" >
-    select count(*) from pms_base_attr_value
+  <select id="countByExample" parameterType="com.kgc.kmall.bean.PmsProductImageExample" resultType="java.lang.Integer" >
+    select count(*) from pms_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update pms_base_attr_value
+    update pms_product_image
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.valueName != null" >
-        value_name = #{record.valueName,jdbcType=VARCHAR},
+      <if test="record.productId != null" >
+        product_id = #{record.productId,jdbcType=BIGINT},
       </if>
-      <if test="record.attrId != null" >
-        attr_id = #{record.attrId,jdbcType=BIGINT},
+      <if test="record.imgName != null" >
+        img_name = #{record.imgName,jdbcType=VARCHAR},
       </if>
-      <if test="record.isEnabled != null" >
-        is_enabled = #{record.isEnabled,jdbcType=VARCHAR},
+      <if test="record.imgUrl != null" >
+        img_url = #{record.imgUrl,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -170,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update pms_base_attr_value
+    update pms_product_image
     set id = #{record.id,jdbcType=BIGINT},
-      value_name = #{record.valueName,jdbcType=VARCHAR},
-      attr_id = #{record.attrId,jdbcType=BIGINT},
-      is_enabled = #{record.isEnabled,jdbcType=VARCHAR}
+      product_id = #{record.productId,jdbcType=BIGINT},
+      img_name = #{record.imgName,jdbcType=VARCHAR},
+      img_url = #{record.imgUrl,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.kmall.bean.PmsBaseAttrValue" >
-    update pms_base_attr_value
+  <update id="updateByPrimaryKeySelective" parameterType="com.kgc.kmall.bean.PmsProductImage" >
+    update pms_product_image
     <set >
-      <if test="valueName != null" >
-        value_name = #{valueName,jdbcType=VARCHAR},
+      <if test="productId != null" >
+        product_id = #{productId,jdbcType=BIGINT},
       </if>
-      <if test="attrId != null" >
-        attr_id = #{attrId,jdbcType=BIGINT},
+      <if test="imgName != null" >
+        img_name = #{imgName,jdbcType=VARCHAR},
       </if>
-      <if test="isEnabled != null" >
-        is_enabled = #{isEnabled,jdbcType=VARCHAR},
+      <if test="imgUrl != null" >
+        img_url = #{imgUrl,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.kgc.kmall.bean.PmsBaseAttrValue" >
-    update pms_base_attr_value
-    set value_name = #{valueName,jdbcType=VARCHAR},
-      attr_id = #{attrId,jdbcType=BIGINT},
-      is_enabled = #{isEnabled,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.kgc.kmall.bean.PmsProductImage" >
+    update pms_product_image
+    set product_id = #{productId,jdbcType=BIGINT},
+      img_name = #{imgName,jdbcType=VARCHAR},
+      img_url = #{imgUrl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -98,13 +98,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsBaseAttrInfo" >
+  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsBaseAttrInfo" useGeneratedKeys="true" keyProperty="id">
     insert into pms_base_attr_info (id, attr_name, catalog3_id, 
       is_enabled)
     values (#{id,jdbcType=BIGINT}, #{attrName,jdbcType=VARCHAR}, #{catalog3Id,jdbcType=BIGINT}, 
       #{isEnabled,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsBaseAttrInfo" >
+  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsBaseAttrInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into pms_base_attr_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
