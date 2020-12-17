@@ -1,6 +1,7 @@
 package com.kgc.kmall.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class PmsProductSaleAttr implements Serializable {
     private Long id;
@@ -10,6 +11,18 @@ public class PmsProductSaleAttr implements Serializable {
     private Long saleAttrId;
 
     private String saleAttrName;
+
+
+    //销售属性值集合
+    private List<pmsProductSaleAttrValue> spuSaleAttrValueList;
+
+    public List<pmsProductSaleAttrValue> getSpuSaleAttrValueList() {
+        return spuSaleAttrValueList;
+    }
+
+    public void setSpuSaleAttrValueList(List<pmsProductSaleAttrValue> spuSaleAttrValueList) {
+        this.spuSaleAttrValueList = spuSaleAttrValueList;
+    }
 
     public Long getId() {
         return id;
