@@ -2,6 +2,7 @@ package com.kgc.kmall.manager.mapper;
 
 import com.kgc.kmall.bean.PmsProductInfo;
 import com.kgc.kmall.bean.PmsProductInfoExample;
+import com.kgc.kmall.bean.PmsProductSaleAttr;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface PmsProductInfoMapper {
     int updateByPrimaryKeySelective(PmsProductInfo record);
 
     int updateByPrimaryKey(PmsProductInfo record);
+
+
 }

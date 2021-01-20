@@ -21,4 +21,8 @@ public interface SpuService {
     List<PmsProductSaleAttr> spuSaleAttrList(Long spuId);
 
     List<PmsProductImage> spuImageList(Long spuId);
+
+
+    //回显销售属性和销售属性值
+    List<PmsProductSaleAttr> spuSaleAttrListIsCheck(Long spuId,Long skuId);
 }

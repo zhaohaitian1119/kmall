@@ -96,6 +96,10 @@
     from pms_base_attr_value
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectByAttrId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select * from pms_base_attr_value
+    where attr_id = #{attrId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from pms_base_attr_value
     where id = #{id,jdbcType=BIGINT}

@@ -7,6 +7,36 @@
     <result column="catalog3_id" property="catalog3Id" jdbcType="BIGINT" />
     <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultMap2" type="com.kgc.kmall.bean.PmsBaseAttrInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="attr_name" property="attrName" jdbcType="VARCHAR" />
+    <result column="catalog3_id" property="catalog3Id" jdbcType="BIGINT" />
+    <result column="is_enabled" property="isEnabled" jdbcType="VARCHAR" />
+    <collection property="attrValueList" ofType="com.kgc.kmall.bean.PmsBaseAttrValue" select="com.kgc.kmall.manager.mapper.PmsBaseAttrValueMapper.selectByAttrId" column="id">
+
+    </collection>
+  </resultMap>
+
+  <select id="selectAttrInfoValueListByValueId" resultMap="BaseResultMap3">
+    SELECT *
+    FROM view_pms_base_attr_infor_value
+    WHERE value_id IN(${valueIdStr})
+  </select>
+
+  <resultMap id="BaseResultMap3" type="com.kgc.kmall.bean.PmsBaseAttrInfo" >
+    <id column="attr_id" property="id" jdbcType="BIGINT" />
+    <result column="attr_name" property="attrName" jdbcType="VARCHAR" />
+    <result column="catalog3_id" property="catalog3Id" jdbcType="BIGINT" />
+    <collection property="attrValueList" ofType="com.kgc.kmall.bean.PmsBaseAttrValue">
+      <id column="value_id" property="id" jdbcType="BIGINT" />
+      <result column="value_name" property="valueName" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+
+  <select id="sel" resultMap="BaseResultMap2" parameterType="java.lang.Long" >
+    select *
+    from pms_base_attr_info
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

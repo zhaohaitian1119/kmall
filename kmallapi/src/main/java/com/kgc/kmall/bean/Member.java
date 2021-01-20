@@ -3,7 +3,7 @@ package com.kgc.kmall.bean;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Member implements Serializable{
+public class Member implements Serializable {
     private Long id;
 
     private Long memberLevelId;
@@ -42,30 +42,9 @@ public class Member implements Serializable{
 
     private Integer historyIntegration;
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", memberLevelId=" + memberLevelId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", nickname='" + nickname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", status=" + status +
-                ", createTime=" + createTime +
-                ", icon='" + icon + '\'' +
-                ", gender=" + gender +
-                ", birthday=" + birthday +
-                ", city='" + city + '\'' +
-                ", job='" + job + '\'' +
-                ", personalizedSignature='" + personalizedSignature + '\'' +
-                ", sourceType=" + sourceType +
-                ", integration=" + integration +
-                ", growth=" + growth +
-                ", luckeyCount=" + luckeyCount +
-                ", historyIntegration=" + historyIntegration +
-                '}';
-    }
+    private String accessToken;
+
+    private Long sourceUid;
 
     public Long getId() {
         return id;
@@ -217,5 +196,21 @@ public class Member implements Serializable{
 
     public void setHistoryIntegration(Integer historyIntegration) {
         this.historyIntegration = historyIntegration;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken == null ? null : accessToken.trim();
+    }
+
+    public Long getSourceUid() {
+        return sourceUid;
+    }
+
+    public void setSourceUid(Long sourceUid) {
+        this.sourceUid = sourceUid;
     }
 }

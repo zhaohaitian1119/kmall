@@ -8,6 +8,8 @@
     <result column="catalog3_id" property="catalog3Id" jdbcType="BIGINT" />
     <result column="tm_id" property="tmId" jdbcType="BIGINT" />
   </resultMap>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -99,13 +101,13 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsProductInfo" >
+  <insert id="insert" parameterType="com.kgc.kmall.bean.PmsProductInfo"  useGeneratedKeys="true" keyProperty="id" >
     insert into pms_product_info (id, product_name, description, 
       catalog3_id, tm_id)
     values (#{id,jdbcType=BIGINT}, #{spuName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR},
       #{catalog3Id,jdbcType=BIGINT}, #{tmId,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsProductInfo" >
+  <insert id="insertSelective" parameterType="com.kgc.kmall.bean.PmsProductInfo"  useGeneratedKeys="true" keyProperty="id">
     insert into pms_product_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

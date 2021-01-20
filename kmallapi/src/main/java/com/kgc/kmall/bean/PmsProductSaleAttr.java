@@ -13,6 +13,7 @@ public class PmsProductSaleAttr implements Serializable {
     private String saleAttrName;
 
 
+
     //销售属性值集合
     private List<PmsProductSaleAttrValue> spuSaleAttrValueList;
 

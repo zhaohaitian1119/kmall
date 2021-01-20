@@ -4,9 +4,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.kgc.kmall</groupId>
+        <artifactId>kmall-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+  <!--  <name>kmall-api</name>
+    &lt;!&ndash; FIXME change it to the project's website &ndash;&gt;
+    <url>http://www.example.com</url>-->
+
     <groupId>com.kgc.kmall</groupId>
     <artifactId>kmall-api</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -20,6 +35,16 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
+<!--        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+        &lt;!&ndash; https://mvnrepository.com/artifact/io.searchbox/jest &ndash;&gt;
+        <dependency>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>5.3.4</version>
+        </dependency>-->
     </dependencies>
 
 </project>
